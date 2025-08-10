@@ -5,8 +5,11 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
+import org.testng.annotations.Test;
 
 public class PositiveLoginTest {
+
+    @Test
     public void TestLoginFunctionality(){
         //Open page
         WebDriver driver=new ChromeDriver();
@@ -20,9 +23,15 @@ public class PositiveLoginTest {
         //Push Submit button
         WebElement SubmitButton= driver.findElement(By.id("submit"));
         SubmitButton.click();
+
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
         //Verify new page URL contains practicetestautomation.com/logged-in-successfully/
 
-        String ExpectedUrl="https://lbfinance.udemy.com/course/selenium-for-beginners/learn/lecture/45915489#notes";
+        String ExpectedUrl="https://practicetestautomation.com/logged-in-successfully/";
         String ActualURL= driver.getCurrentUrl();
 
         Assert.assertEquals(ActualURL, ExpectedUrl);//first Actual  then Expected
