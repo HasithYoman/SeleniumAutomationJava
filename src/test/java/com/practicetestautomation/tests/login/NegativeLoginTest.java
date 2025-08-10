@@ -26,6 +26,12 @@ public class NegativeLoginTest {
         //Push Submit button
         WebElement ClickSubmit= driver.findElement(By.id("submit"));
         ClickSubmit.click();
+
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
         //Verify error message is displayed
         WebElement ErrorMessage= driver.findElement(By.id("error"));
         Assert.assertTrue(ErrorMessage.isDisplayed());//error meg actually disply(true /false)
