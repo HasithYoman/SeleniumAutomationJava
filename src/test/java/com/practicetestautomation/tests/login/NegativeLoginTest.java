@@ -17,7 +17,7 @@ public class NegativeLoginTest {
         driver.get("https://practicetestautomation.com/practice-test-login/");
         //Type username incorrectUser into Username field
         WebElement IncorrectUserName= driver.findElement(By.id("username"));
-        IncorrectUserName.sendKeys("INCstudent");
+        IncorrectUserName.sendKeys("Incorrectstudent");
         //Type password Password123 into Password field
         WebElement InputPassword= driver.findElement(By.id("password"));
         InputPassword.sendKeys("Password123");
@@ -37,6 +37,27 @@ public class NegativeLoginTest {
     }
     @Test
     public void IncorrectPasswordTest(){
+       //Test case 3: Negative password test
+        //Open page
+        WebDriver driver=new ChromeDriver();
+        driver.get("https://practicetestautomation.com/practice-test-login/");
+        //Type username student into Username field
+        WebElement InputUserName= driver.findElement(By.id("username"));
+        InputUserName.sendKeys("student");
+        //Type password incorrectPassword into Password field
+        WebElement InputPassword= driver.findElement(By.id("password"));
+        InputPassword.sendKeys("IncorrectPWD");
+        //Push Submit button
+        WebElement SubmitButton=driver.findElement(By.id("submit"));
+        SubmitButton.click();
+        //Verify error message is displayed
+        WebElement ErrorMessage= driver.findElement(By.id("error"));
+        Assert.assertTrue(ErrorMessage.isDisplayed());
+        //Verify error message text is Your password is invalid!
+        String ExpectedErrorMessage="Your password is invalid!";
+        String actualMessage= ErrorMessage.getText();
+        Assert.assertEquals(actualMessage, ExpectedErrorMessage );
 
+        driver.quit();
     }
 }
