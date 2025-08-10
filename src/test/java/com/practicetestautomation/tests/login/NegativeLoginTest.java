@@ -4,6 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.edge.EdgeDriver;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -13,6 +14,7 @@ public class NegativeLoginTest {
     public void IncorrectUserNameTest(){
         //Test case 2: Negative username test
         //Open page
+        //System.setProperty("webdriver.edge.driver", "src/main/resources/msedgedriver.exe");
         WebDriver driver=new ChromeDriver();
         driver.get("https://practicetestautomation.com/practice-test-login/");
         //Type username incorrectUser into Username field
